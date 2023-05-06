@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1F1F1F"
+    android:padding="8dp"
+    tools:context=".MainActivity">
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/checkButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/table"
+        app:layout_constraintVertical_bias="0.3">
+
+        <TextView
+            android:id="@+id/snackBarTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:textAlignment="center">
+
+        </TextView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <!--    <ScrollView-->
+    <!--        android:id="@+id/scrollView2"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="15dp"-->
+    <!--        android:scrollbars="none"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent">-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center_horizontal|center_vertical"-->
+    <!--            android:gravity="center"-->
+    <!--            android:orientation="vertical">-->
+
+
+    <TableLayout
+        android:id="@+id/table"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2">
+
+        <TableRow
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="1"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="2"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="3"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="4"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="5"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="1"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="2"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="3"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="4"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="5"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="1"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="2"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="3"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="4"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="5"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="1"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="2"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="3"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="4"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="5"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="1"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="2"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="3"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="4"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="5"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="1"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="2"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="3"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="4"
+                android:layout_marginEnd="20dp"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_column="5"
+                android:autofillHints="FILA 1 COLUMNA 1"
+                android:background="#F5F5F5"
+                android:enabled="false"
+                android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
+                android:maxLength="1"
+                android:padding="3dip"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <Button
+        android:id="@+id/checkButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Check word"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/table" />
+    <!--        </LinearLayout>-->
+
+    <!--    </ScrollView>-->
+
+
+    <!--    <View-->
+    <!--        android:id="@+id/view1"-->
+    <!--        android:layout_width="50dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:background="@color/black"-->
+    <!--        app:layout_constraintHorizontal_chainStyle="spread"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.06"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.1" />-->
+
+    <!--    <View-->
+    <!--        android:id="@+id/view2"-->
+    <!--        android:layout_width="50dp"-->
+    <!--        android:layout_height="50dp"-->
+    <!--        android:background="@color/black"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.1"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/view1"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.1" />-->
+
+
+    <Space
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@+id/checkButton">
+
+    </Space>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/separator"
+        >
+
+        <Button
+            android:id="@+id/btnA"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="A"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="B"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="C"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="D"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="E"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="F"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

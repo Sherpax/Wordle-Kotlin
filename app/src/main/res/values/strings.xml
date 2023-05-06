@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Wordle</string>
+    <string name="win_message">Has ganado!</string>
+    <string name="lose_message_template">Has perdido! La palabra era %s</string>
+    <string name="reset_game">Resetear</string>
+    <string name="word_must_contain_5_letters">The word must contain 5 letters</string>
+    <string name="the_word_introduced_is_not_valid">The word introduced is not valid</string>
+</resources>
