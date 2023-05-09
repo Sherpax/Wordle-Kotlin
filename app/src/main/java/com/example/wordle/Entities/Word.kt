@@ -1,4 +1,4 @@
-package com.example.wordle
+package com.example.wordle.Entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

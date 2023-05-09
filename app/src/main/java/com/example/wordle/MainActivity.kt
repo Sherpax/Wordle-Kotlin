@@ -3,7 +3,6 @@ package com.example.wordle
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
@@ -18,8 +17,12 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
+import com.example.wordle.DAO.WordDao
+import com.example.wordle.Entities.Word
 import com.example.wordle.databinding.ActivityMainBinding
 import com.google.android.material.R.id
+import com.google.android.material.behavior.SwipeDismissBehavior
+import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 import com.google.android.material.snackbar.Snackbar
 import java.io.BufferedReader
@@ -33,10 +36,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var linerLayoutsArray: Array<LinearLayout>
     private val wordMap = hashMapOf<Char, Int>()
-    private val FINAL_ROW = 6
-    private val WORDS_TXT = "words.txt"
+    private val FINAL_ROW: Int = 6
+    private val WORDS_TXT: String = "words.txt"
     private var editTextList = mutableListOf<EditText>()
-    private var currentRow = 0
+    private var currentRow: Int = 0
     private var wordToGuess: String = "VIVAZ"
     private var db: AppDatabase? = null
     private var dao: WordDao? = null
@@ -239,7 +242,11 @@ class MainActivity : AppCompatActivity() {
                 textSize = 18f
             }
         binding.coordLayout.bringToFront()
-        snackbar.show()
+        val behavior = BaseTransientBottomBar.Behavior().apply {
+            setSwipeDirection(SwipeDismissBehavior.SWIPE_DIRECTION_ANY)
+        }
+        snackbar.setBehavior(behavior)
+                .show()
     }
 
     private fun loadEditTexts() {
