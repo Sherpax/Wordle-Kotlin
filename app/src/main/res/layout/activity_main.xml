@@ -67,7 +67,7 @@
 
         <TableRow
             android:layout_marginEnd="5dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -76,7 +76,7 @@
                 android:layout_height="50dp"
                 android:layout_column="1"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
                 android:maxLength="1"
@@ -89,7 +89,7 @@
                 android:layout_height="50dp"
                 android:layout_column="2"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
                 android:maxLength="1"
@@ -103,7 +103,7 @@
                 android:layout_height="50dp"
                 android:layout_column="3"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
                 android:maxLength="1"
@@ -117,7 +117,7 @@
                 android:layout_height="50dp"
                 android:layout_column="4"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
                 android:maxLength="1"
@@ -130,7 +130,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_column="5"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
                 android:maxLength="1"
@@ -143,7 +143,7 @@
 
         <TableRow
             android:layout_marginEnd="5dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -152,7 +152,7 @@
                 android:layout_height="50dp"
                 android:layout_column="1"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -166,7 +166,7 @@
                 android:layout_height="50dp"
                 android:layout_column="2"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -180,7 +180,7 @@
                 android:layout_height="50dp"
                 android:layout_column="3"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -194,7 +194,7 @@
                 android:layout_height="50dp"
                 android:layout_column="4"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -207,7 +207,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_column="5"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -220,7 +220,7 @@
 
         <TableRow
             android:layout_marginEnd="5dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -229,7 +229,7 @@
                 android:layout_height="50dp"
                 android:layout_column="1"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -243,7 +243,7 @@
                 android:layout_height="50dp"
                 android:layout_column="2"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -257,7 +257,7 @@
                 android:layout_height="50dp"
                 android:layout_column="3"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -271,7 +271,7 @@
                 android:layout_height="50dp"
                 android:layout_column="4"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -284,7 +284,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_column="5"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -297,7 +297,7 @@
 
         <TableRow
             android:layout_marginEnd="5dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -306,7 +306,7 @@
                 android:layout_height="50dp"
                 android:layout_column="1"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -320,7 +320,7 @@
                 android:layout_height="50dp"
                 android:layout_column="2"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -334,7 +334,7 @@
                 android:layout_height="50dp"
                 android:layout_column="3"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -348,7 +348,7 @@
                 android:layout_height="50dp"
                 android:layout_column="4"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -361,7 +361,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_column="5"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -374,7 +374,7 @@
 
         <TableRow
             android:layout_marginEnd="5dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -383,7 +383,7 @@
                 android:layout_height="50dp"
                 android:layout_column="1"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -397,7 +397,7 @@
                 android:layout_height="50dp"
                 android:layout_column="2"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -411,7 +411,7 @@
                 android:layout_height="50dp"
                 android:layout_column="3"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -425,7 +425,7 @@
                 android:layout_height="50dp"
                 android:layout_column="4"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -438,7 +438,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_column="5"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -451,7 +451,7 @@
 
         <TableRow
             android:layout_marginEnd="5dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -460,7 +460,7 @@
                 android:layout_height="50dp"
                 android:layout_column="1"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -474,7 +474,7 @@
                 android:layout_height="50dp"
                 android:layout_column="2"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -488,7 +488,7 @@
                 android:layout_height="50dp"
                 android:layout_column="3"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -502,7 +502,7 @@
                 android:layout_height="50dp"
                 android:layout_column="4"
                 android:layout_marginEnd="20dp"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -515,7 +515,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_column="5"
-                android:autofillHints="FILA 1 COLUMNA 1"
+
                 android:background="#F5F5F5"
                 android:enabled="false"
                 android:inputType="textCapCharacters|textNoSuggestions|textVisiblePassword"
@@ -535,7 +535,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="Check word"
+        android:text="@string/validate_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/table" />
@@ -580,59 +580,374 @@
     </Space>
 
     <LinearLayout
+        android:id="@+id/firstLinear"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/separator"
-        >
+        android:layout_height="45dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/separator">
 
-        <Button
+        <TextView
             android:id="@+id/btnA"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:text="A"
-            android:layout_marginEnd="5dp"
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="Q"
+            android:textColor="@color/black"
+            android:textSize="27sp"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_conversion_absoluteWidth="60dp" />
 
-        <Button
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:text="B"
-            android:layout_marginEnd="5dp"
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="W"
+            android:textColor="@color/black"
+            android:textSize="27sp"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_conversion_absoluteWidth="60dp" />
-        <Button
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:text="C"
-            android:layout_marginEnd="5dp"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_conversion_absoluteWidth="60dp" />
-        <Button
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:text="D"
-            android:layout_marginEnd="5dp"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_conversion_absoluteWidth="60dp" />
-        <Button
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
             android:text="E"
-            android:layout_marginEnd="5dp"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_conversion_absoluteWidth="60dp" />
-        <Button
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:text="F"
-            android:layout_marginEnd="5dp"
+            android:textColor="@color/black"
+            android:textSize="27sp"
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_conversion_absoluteWidth="60dp" />
 
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="R"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="T"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="Y"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="U"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="I"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="O"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="P"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/secondLinear"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstLinear">
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="A"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="S"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="D"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="F"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="G"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="H"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="J"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="K"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="L"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="Ñ"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/thirdLayout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/secondLinear">
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="Z"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="X"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="C"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="V"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="B"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="N"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/custom_textview"
+            android:gravity="center"
+            android:text="M"
+            android:textColor="@color/black"
+            android:textSize="27sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_conversion_absoluteWidth="60dp" />
+
+        <Button
+            android:id="@+id/btnErase"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="#A44346"
+            android:drawableEnd="@drawable/baseline_delete_24"
+            android:gravity="center"
+            android:padding="13dp" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

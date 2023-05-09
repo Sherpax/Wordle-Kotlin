@@ -3,6 +3,7 @@ package com.example.wordle
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.Editable
@@ -11,10 +12,12 @@ import android.view.Gravity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TableRow
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
 import com.example.wordle.databinding.ActivityMainBinding
 import com.google.android.material.R.id
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
@@ -28,6 +31,7 @@ import java.util.stream.IntStream.range
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var linerLayoutsArray: Array<LinearLayout>
     private val wordMap = hashMapOf<Char, Int>()
     private val FINAL_ROW = 6
     private val WORDS_TXT = "words.txt"
@@ -73,6 +77,13 @@ class MainActivity : AppCompatActivity() {
 
         loadEditTexts()
 
+        linerLayoutsArray = arrayOf(
+            binding.firstLinear, binding.secondLinear,
+            binding.thirdLayout
+        )
+
+        txtViewHandler()
+
         wordToGuess.forEach { char ->
             wordMap[char] = wordMap.getOrDefault(char, 0) + 1
         }
@@ -83,6 +94,34 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private var currPos = 0
+    private fun txtViewHandler() {
+        for (e in linerLayoutsArray) {
+            for (ie in e.children) {
+                ie.isClickable = true
+                ie.setOnClickListener { event ->
+                      keyboardHandler(event)
+                }
+            }
+        }
+    }
+
+    private fun keyboardHandler(event: View?) {
+        if (!binding.btnErase.isClickable) return
+        val txt = event as TextView
+        val maxFocus = currentRow * 5 + 5
+        if (txt.id != binding.btnErase.id && currPos < maxFocus) {
+            editTextList[currPos++].apply {
+                setText(txt.text)
+            }
+        } else if (txt.id == binding.btnErase.id && currPos > maxFocus - 5) {
+            editTextList[--currPos].apply {
+                setText(txt.text)
+                setSelection(0)
+            }
+        }
     }
 
     private fun wordIntroduced(ini: Int, end: Int): String {
@@ -114,9 +153,13 @@ class MainActivity : AppCompatActivity() {
 
         when {
             wordIntroduced.length != 5 -> showErrorWordAlert(
-                getString(R.string.word_must_contain_5_letters))
+                getString(R.string.word_must_contain_5_letters)
+            )
+
             !isValidWord(wordIntroduced) -> showErrorWordAlert(
-                getString(R.string.the_word_introduced_is_not_valid))
+                getString(R.string.the_word_introduced_is_not_valid)
+            )
+
             else -> validateWord(ini, maxCol)
         }
     }
@@ -126,6 +169,7 @@ class MainActivity : AppCompatActivity() {
         var isWinner = true
         //Button check disabled to avoid spam
         binding.checkButton.isEnabled = false
+        binding.btnErase.isClickable = false
 
         Thread {
             for (i in ini until maxCol) {
@@ -141,6 +185,7 @@ class MainActivity : AppCompatActivity() {
                             ++currentRow
                             makeNextRowEditable()
                             binding.checkButton.isEnabled = true
+                            binding.btnErase.isClickable = true
                         }
                         checkEndGame(isWinner)
                     }
@@ -206,7 +251,10 @@ class MainActivity : AppCompatActivity() {
             for (j in range(0, 5)) {
                 val item = row.getChildAt(j) as EditText
                 editTextHandler(item)
+                item.id = contTag
                 item.tag = contTag++
+                item.isFocusable = false
+                item.isCursorVisible = false
                 item.setTextColor(Color.rgb(255, 255, 255))
                 item.setBackgroundColor(Color.parseColor("#434343"))
                 editTextList.add(item)
@@ -220,11 +268,11 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun afterTextChanged(p0: Editable?) {
                 item.removeTextChangedListener(this)
-                val regex = Regex(pattern = "[a-zA-Z|\b]+")
+                val regex = Regex(pattern = "[a-zA-ZñÑ|\b]+")
                 // Obtener la posición actual del cursor
                 if (regex.matches(p0.toString())) {
                     item.setText(p0.toString().uppercase())
-                    item.setSelection(1) // Cursor position next to letter
+//                    item.setSelection(1) // Cursor position next to letter
                     val nextTagNumber = item.tag.toString().toInt() + 1
                     if (nextTagNumber < currentRow * 5 + 5) {
                         editTextList[nextTagNumber].requestFocus()
