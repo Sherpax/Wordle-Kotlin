@@ -10,6 +10,7 @@ import android.text.TextWatcher
 import android.view.Gravity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TableRow
@@ -17,11 +18,12 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
-import com.example.wordle.DAO.WordDao
-import com.example.wordle.Entities.Word
+import com.example.wordle.dao.WordDao
+import com.example.wordle.entities.Word
 import com.example.wordle.databinding.ActivityMainBinding
 import com.google.android.material.R.id
 import com.google.android.material.behavior.SwipeDismissBehavior
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_SHORT
 import com.google.android.material.snackbar.Snackbar
@@ -41,6 +43,8 @@ class MainActivity : AppCompatActivity() {
     private var editTextList = mutableListOf<EditText>()
     private var currentRow: Int = 0
     private var wordToGuess: String = "VIVAZ"
+    private var currPos = 0
+    private val arrTextViews = arrayListOf<TextView>()
     private var db: AppDatabase? = null
     private var dao: WordDao? = null
 
@@ -99,13 +103,18 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private var currPos = 0
     private fun txtViewHandler() {
         for (e in linerLayoutsArray) {
             for (ie in e.children) {
-                ie.isClickable = true
-                ie.setOnClickListener { event ->
+                val txtView = ie as TextView
+                txtView.tag = txtView.text
+                txtView.isClickable = true
+                txtView.setOnClickListener { event ->
                       keyboardHandler(event)
+                }
+                println(ie)
+                if(ie !is MaterialButton){
+                    arrTextViews.add(txtView)
                 }
             }
         }
@@ -169,6 +178,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun validateWord(ini: Int, maxCol: Int) {
         val shallowWordMap = wordMap.toMutableMap()
+        val letterColorMap = mutableMapOf<String, String>()
         var isWinner = true
         //Button check disabled to avoid spam
         binding.checkButton.isEnabled = false
@@ -181,6 +191,9 @@ class MainActivity : AppCompatActivity() {
                 val pair = getIsWinnerAndColor(contIntWord, char, shallowWordMap, isWinner)
                 val color = pair.first
                 isWinner = pair.second
+
+//                if(letterColorMap.containsKey() && color)
+
                 runOnUiThread {
                     updateUIRows(i, color)
                     if (i == maxCol - 1) {
@@ -196,6 +209,11 @@ class MainActivity : AppCompatActivity() {
                 Thread.sleep(390)
             }
         }.start()
+
+//        for (txt in arrTextViews){
+//            if()
+//        }
+
     }
 
     private fun getIsWinnerAndColor(
@@ -205,24 +223,24 @@ class MainActivity : AppCompatActivity() {
         isWinner: Boolean
     ): Pair<Int, Boolean> {
         var isWinner1 = isWinner
-        val i = when {
+        val color = when {
             wordToGuess[contIntWord] == char && shallowWordMap[char] != 0 -> {
                 shallowWordMap[char]?.minus(1)?.let { shallowWordMap.put(char, it) }
-                Color.rgb(3, 139, 89)
+                WORD_COLORS.GREEN.getRGB()
             }
 
             shallowWordMap.containsKey(char) && shallowWordMap[char] != 0 -> {
                 shallowWordMap[char]?.minus(1)?.let { shallowWordMap.put(char, it) }
                 isWinner1 = false
-                Color.rgb(242, 194, 48)
+                WORD_COLORS.YELLOW.getRGB()
             }
 
             else -> {
                 isWinner1 = false
-                Color.rgb(14, 14, 14)
+                WORD_COLORS.BLACK.getRGB()
             }
         }
-        return Pair(i, isWinner1)
+        return Pair(color, isWinner1)
     }
 
     private fun updateUIRows(i: Int, color: Int) {

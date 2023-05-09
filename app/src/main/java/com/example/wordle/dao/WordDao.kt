@@ -1,10 +1,10 @@
-package com.example.wordle.DAO
+package com.example.wordle.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.wordle.Entities.Word
+import com.example.wordle.entities.Word
 import java.util.LinkedList
 
 @Dao
