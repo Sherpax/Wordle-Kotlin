@@ -10,7 +10,6 @@ import android.text.TextWatcher
 import android.view.Gravity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TableRow
@@ -18,9 +17,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
+import androidx.core.view.isVisible
 import com.example.wordle.dao.WordDao
-import com.example.wordle.entities.Word
 import com.example.wordle.databinding.ActivityMainBinding
+import com.example.wordle.entities.Word
 import com.google.android.material.R.id
 import com.google.android.material.behavior.SwipeDismissBehavior
 import com.google.android.material.button.MaterialButton
@@ -101,6 +101,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.resetButton.setOnClickListener {
+            if (it.isVisible) {
+                resetGame()
+            }
+        }
+
+    }
+
+    private fun resetGame() {
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     private fun txtViewHandler() {
@@ -110,14 +120,15 @@ class MainActivity : AppCompatActivity() {
                 txtView.tag = txtView.text
                 txtView.isClickable = true
                 txtView.setOnClickListener { event ->
-                      keyboardHandler(event)
+                    keyboardHandler(event)
                 }
                 println(ie)
-                if(ie !is MaterialButton){
+                if (ie !is MaterialButton) {
                     arrTextViews.add(txtView)
                 }
             }
         }
+        arrTextViews.sortBy { it.text.toString() }
     }
 
     private fun keyboardHandler(event: View?) {
@@ -178,7 +189,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun validateWord(ini: Int, maxCol: Int) {
         val shallowWordMap = wordMap.toMutableMap()
-        val letterColorMap = mutableMapOf<String, String>()
+        val introducedWord: StringBuilder = StringBuilder()
         var isWinner = true
         //Button check disabled to avoid spam
         binding.checkButton.isEnabled = false
@@ -188,11 +199,10 @@ class MainActivity : AppCompatActivity() {
             for (i in ini until maxCol) {
                 val contIntWord = i - ini
                 val char = editTextList[i].text.toString().first()
+                introducedWord.append(char)
                 val pair = getIsWinnerAndColor(contIntWord, char, shallowWordMap, isWinner)
                 val color = pair.first
                 isWinner = pair.second
-
-//                if(letterColorMap.containsKey() && color)
 
                 runOnUiThread {
                     updateUIRows(i, color)
@@ -200,6 +210,7 @@ class MainActivity : AppCompatActivity() {
                         if (currentRow != FINAL_ROW) {
                             ++currentRow
                             makeNextRowEditable()
+                            updateUIKeyColors(introducedWord.toString())
                             binding.checkButton.isEnabled = true
                             binding.btnErase.isClickable = true
                         }
@@ -209,10 +220,66 @@ class MainActivity : AppCompatActivity() {
                 Thread.sleep(390)
             }
         }.start()
+    }
 
-//        for (txt in arrTextViews){
-//            if()
-//        }
+    private fun updateUIKeyColors(
+        introducedWord: String
+    ) {
+        val shallowWordMap = wordMap.toMutableMap()
+        var contPosWord = 0
+        for (char in introducedWord) {
+            var pos = 0
+            if (char == 'Ñ') {
+                pos = 26 // último elemento lista
+            } else {
+                pos = char.code - 65
+            }
+            val color = when {
+                wordToGuess[contPosWord++] == char && shallowWordMap[char] != 0 -> {
+                    shallowWordMap[char]?.minus(1)?.let {
+                        shallowWordMap[char] = it
+                    }
+                    "GREEN"
+                }
+
+                shallowWordMap.containsKey(char) && shallowWordMap[char] != 0 -> {
+                    shallowWordMap[char]?.minus(1)?.let {
+                        shallowWordMap[char] = it
+
+                    }
+                    "YELLOW"
+                }
+
+                else -> {
+                    "BLACK"
+                }
+            }
+
+            if(arrTextViews[pos].tag == "GREEN" || arrTextViews[pos].tag == "BLACK") continue
+            val isGreen = color == "GREEN"
+            val isYellow = color == "YELLOW"
+            if (isGreen && arrTextViews[pos].tag != "GREEN") {
+                arrTextViews[pos].setBackgroundColor(WORD_COLORS.GREEN.getRGB())
+                arrTextViews[pos].tag = color
+            } else if(isYellow) {
+                arrTextViews[pos].setBackgroundColor(WORD_COLORS.YELLOW.getRGB())
+                arrTextViews[pos].tag = color
+            }else {
+                if(arrTextViews[pos].tag != "YELLOW")
+                    arrTextViews[pos].setBackgroundColor(WORD_COLORS.BLACK.getRGB())
+            }
+
+
+//            if (isGreenColor) {
+//                arrTextViews[pos].setBackgroundColor(WORD_COLORS.GREEN.getRGB())
+//                arrTextViews[pos].tag = "GREEN"
+//            } else if(shallowWordMap.containsKey(char)) {
+//                arrTextViews[pos].setBackgroundColor(WORD_COLORS.YELLOW.getRGB())
+//            } else {
+//                arrTextViews[pos].setBackgroundColor(WORD_COLORS.BLACK.getRGB())
+//            }
+            arrTextViews[pos].setTextColor(WORD_COLORS.WHITE.getRGB())
+        }
 
     }
 
@@ -264,7 +331,7 @@ class MainActivity : AppCompatActivity() {
             setSwipeDirection(SwipeDismissBehavior.SWIPE_DIRECTION_ANY)
         }
         snackbar.setBehavior(behavior)
-                .show()
+            .show()
     }
 
     private fun loadEditTexts() {
@@ -280,7 +347,7 @@ class MainActivity : AppCompatActivity() {
                 item.tag = contTag++
                 item.isFocusable = false
                 item.isCursorVisible = false
-                item.setTextColor(Color.rgb(255, 255, 255))
+                item.setTextColor(WORD_COLORS.WHITE.getRGB())
                 item.setBackgroundColor(Color.parseColor("#434343"))
                 editTextList.add(item)
             }
@@ -339,12 +406,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showEndGameDialog(messageResId: String) {
-        val builder = AlertDialog.Builder(this)
+        AlertDialog.Builder(this)
             .setMessage(messageResId)
             .setPositiveButton(R.string.reset_game) { dialog, id ->
-                startActivity(Intent(this, MainActivity::class.java))
-            }
-        builder.create().show()
+                resetGame()
+            }.create().show()
+        // Show reset button
+        binding.resetButton.visibility = View.VISIBLE
     }
 
 

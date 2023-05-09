@@ -6,4 +6,5 @@
     <string name="word_must_contain_5_letters">La palabra debe contener 5 letras</string>
     <string name="the_word_introduced_is_not_valid">La palabra introducida no es válida</string>
     <string name="validate_btn">VALIDAR</string>
+    <string name="reset_btn">RESETEAR</string>
 </resources>
