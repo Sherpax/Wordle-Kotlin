@@ -950,12 +950,11 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_conversion_absoluteWidth="60dp" />
 
-        <Button
+        <TextView
             android:id="@+id/btnErase"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:backgroundTint="#A44346"
-            android:drawableEnd="@drawable/baseline_delete_24"
+            android:layout_width="61dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn_del"
             android:gravity="center"
             android:padding="13dp" />
 

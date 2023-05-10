@@ -145,6 +145,7 @@ class MainActivity : AppCompatActivity() {
                 setSelection(0)
             }
         }
+        binding.btnErase.startAnimation(rotateAnimation)
     }
 
     private fun wordIntroduced(ini: Int, end: Int): String {
