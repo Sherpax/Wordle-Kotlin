@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,8 +15,10 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TableRow
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.children
 import androidx.core.view.isVisible
 import com.example.wordle.dao.WordDao
@@ -107,6 +110,23 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.btnErase.setOnClickListener {
+            keyBoardDelBtnHandler(it)
+            binding.btnErase.startAnimation(rotateAnimation)
+        }
+
+
+        // This callback will only be called when MyFragment is at least Started.
+
+        // This callback will only be called when MyFragment is at least Started.
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true /* enabled by default */) {
+                override fun handleOnBackPressed() {
+                    // TODO: Go back to home activity
+                }
+            }
+        this.onBackPressedDispatcher.addCallback(this, callback)
+
     }
 
     private fun resetGame() {
@@ -116,13 +136,14 @@ class MainActivity : AppCompatActivity() {
     private fun txtViewHandler() {
         for (e in linerLayoutsArray) {
             for (ie in e.children) {
+                if (ie.id == binding.btnErase.id) continue
                 val txtView = ie as TextView
                 txtView.tag = txtView.text
                 txtView.isClickable = true
                 txtView.setOnClickListener { event ->
                     keyboardHandler(event)
                 }
-                println(ie)
+                println(ie.text)
                 if (ie !is MaterialButton) {
                     arrTextViews.add(txtView)
                 }
@@ -139,13 +160,19 @@ class MainActivity : AppCompatActivity() {
             editTextList[currPos++].apply {
                 setText(txt.text)
             }
-        } else if (txt.id == binding.btnErase.id && currPos > maxFocus - 5) {
+        }
+    }
+
+    private fun keyBoardDelBtnHandler(event: View?) {
+        if (!binding.btnErase.isClickable) return
+        val txt = event as TextView
+        val maxFocus = currentRow * 5 + 5
+        if (txt.id == binding.btnErase.id && currPos > maxFocus - 5) {
             editTextList[--currPos].apply {
                 setText(txt.text)
                 setSelection(0)
             }
         }
-        binding.btnErase.startAnimation(rotateAnimation)
     }
 
     private fun wordIntroduced(ini: Int, end: Int): String {
@@ -256,18 +283,21 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            if(arrTextViews[pos].tag == "GREEN" || arrTextViews[pos].tag == "BLACK") continue
+            if (arrTextViews[pos].tag == "GREEN" || arrTextViews[pos].tag == "BLACK") continue
+            var buttonDrawable: Drawable = arrTextViews[pos].background
+            buttonDrawable = DrawableCompat.wrap(buttonDrawable)
             val isGreen = color == "GREEN"
             val isYellow = color == "YELLOW"
             if (isGreen && arrTextViews[pos].tag != "GREEN") {
-                arrTextViews[pos].setBackgroundColor(WORD_COLORS.GREEN.getRGB())
+                DrawableCompat.setTint(buttonDrawable, WORD_COLORS.GREEN.getRGB())
                 arrTextViews[pos].tag = color
-            } else if(isYellow) {
-                arrTextViews[pos].setBackgroundColor(WORD_COLORS.YELLOW.getRGB())
+            } else if (isYellow) {
+                DrawableCompat.setTint(buttonDrawable, WORD_COLORS.YELLOW.getRGB())
                 arrTextViews[pos].tag = color
-            }else {
-                if(arrTextViews[pos].tag != "YELLOW")
-                    arrTextViews[pos].setBackgroundColor(WORD_COLORS.BLACK.getRGB())
+            } else {
+                if (arrTextViews[pos].tag != "YELLOW") {
+                    DrawableCompat.setTint(buttonDrawable, WORD_COLORS.BLACK.getRGB())
+                }
             }
 
 
