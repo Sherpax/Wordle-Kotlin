@@ -1,7 +1,10 @@
 package com.example.wordle
 
+import android.animation.ObjectAnimator
+import android.view.View
 import android.view.animation.Animation
 import android.view.animation.RotateAnimation
+import kotlinx.coroutines.delay
 import java.util.concurrent.CountDownLatch
 
 class AnimationListener(private val latch: CountDownLatch) : Animation.AnimationListener {
@@ -33,4 +36,13 @@ class AnimationListener(private val latch: CountDownLatch) : Animation.Animation
         repeatCount = 0 // repeatCount
         setAnimationListener(AnimationListener(latch)) // Establecer el escucha de animación
     }
+
+    fun flipperAnimation(view: View): ObjectAnimator? {
+        return ObjectAnimator.ofFloat(view, "rotationX", 0f, 360f)
+            .apply {
+                duration = 1000
+                start()
+            }
+    }
+
 

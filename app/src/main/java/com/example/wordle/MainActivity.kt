@@ -10,6 +10,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.Gravity
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -25,6 +26,7 @@ import com.example.wordle.dao.WordDao
 import com.example.wordle.databinding.ActivityMainBinding
 import com.example.wordle.entities.Word
 import com.google.android.material.R.id
+import com.example.wordle.R.*
 import com.google.android.material.behavior.SwipeDismissBehavior
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -161,6 +163,8 @@ class MainActivity : AppCompatActivity() {
                 setText(txt.text)
             }
         }
+        val animation = AnimationUtils.loadAnimation(this, anim.view_pressed)
+        event.startAnimation(animation)
     }
 
     private fun keyBoardDelBtnHandler(event: View?) {
@@ -299,16 +303,6 @@ class MainActivity : AppCompatActivity() {
                     DrawableCompat.setTint(buttonDrawable, WORD_COLORS.BLACK.getRGB())
                 }
             }
-
-
-//            if (isGreenColor) {
-//                arrTextViews[pos].setBackgroundColor(WORD_COLORS.GREEN.getRGB())
-//                arrTextViews[pos].tag = "GREEN"
-//            } else if(shallowWordMap.containsKey(char)) {
-//                arrTextViews[pos].setBackgroundColor(WORD_COLORS.YELLOW.getRGB())
-//            } else {
-//                arrTextViews[pos].setBackgroundColor(WORD_COLORS.BLACK.getRGB())
-//            }
             arrTextViews[pos].setTextColor(WORD_COLORS.WHITE.getRGB())
         }
 
@@ -344,7 +338,8 @@ class MainActivity : AppCompatActivity() {
     private fun updateUIRows(i: Int, color: Int) {
         editTextList[i].isFocusable = false
         editTextList[i].setBackgroundColor(color)
-        editTextList[i].startAnimation(rotateAnimation)
+        flipperAnimation(editTextList[i])
+//        editTextList[i].startAnimation(rotateAnimation)
     }
 
 
