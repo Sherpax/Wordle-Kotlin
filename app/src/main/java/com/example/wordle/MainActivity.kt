@@ -5,28 +5,35 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
+import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
+import android.text.InputType
 import android.text.TextWatcher
 import android.view.Gravity
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.OnTouchListener
+import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TableRow
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.view.children
 import androidx.core.view.isVisible
+import com.example.wordle.R.anim
+import com.example.wordle.R.string
 import com.example.wordle.dao.WordDao
 import com.example.wordle.databinding.ActivityMainBinding
 import com.example.wordle.entities.Word
 import com.google.android.material.R.id
-import com.example.wordle.R.*
 import com.google.android.material.behavior.SwipeDismissBehavior
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.BaseTransientBottomBar
@@ -52,6 +59,7 @@ class MainActivity : AppCompatActivity() {
     private val arrTextViews = arrayListOf<TextView>()
     private var db: AppDatabase? = null
     private var dao: WordDao? = null
+    private lateinit var currentEditText: EditText
 
     private fun readWordsFromFile(context: Context): LinkedList<Word> {
         val words = LinkedList<Word>()
@@ -89,6 +97,8 @@ class MainActivity : AppCompatActivity() {
 
         loadEditTexts()
 
+        currentEditText = editTextList[0]
+
         linerLayoutsArray = arrayOf(
             binding.firstLinear, binding.secondLinear,
             binding.thirdLayout
@@ -116,9 +126,6 @@ class MainActivity : AppCompatActivity() {
             keyBoardDelBtnHandler(it)
             binding.btnErase.startAnimation(rotateAnimation)
         }
-
-
-        // This callback will only be called when MyFragment is at least Started.
 
         // This callback will only be called when MyFragment is at least Started.
         val callback: OnBackPressedCallback =
@@ -158,9 +165,11 @@ class MainActivity : AppCompatActivity() {
         if (!binding.btnErase.isClickable) return
         val txt = event as TextView
         val maxFocus = currentRow * 5 + 5
+        currPos = currentEditText.id
         if (txt.id != binding.btnErase.id && currPos < maxFocus) {
-            editTextList[currPos++].apply {
+            currentEditText.apply {
                 setText(txt.text)
+                editTextList[++currPos].requestFocus()
             }
         }
         val animation = AnimationUtils.loadAnimation(this, anim.view_pressed)
@@ -175,6 +184,7 @@ class MainActivity : AppCompatActivity() {
             editTextList[--currPos].apply {
                 setText(txt.text)
                 setSelection(0)
+                editTextList[currPos].requestFocus()
             }
         }
     }
@@ -208,11 +218,11 @@ class MainActivity : AppCompatActivity() {
 
         when {
             wordIntroduced.length != 5 -> showErrorWordAlert(
-                getString(R.string.word_must_contain_5_letters)
+                getString(string.word_must_contain_5_letters)
             )
 
             !isValidWord(wordIntroduced) -> showErrorWordAlert(
-                getString(R.string.the_word_introduced_is_not_valid)
+                getString(string.the_word_introduced_is_not_valid)
             )
 
             else -> validateWord(ini, maxCol)
@@ -261,10 +271,10 @@ class MainActivity : AppCompatActivity() {
         var contPosWord = 0
         for (char in introducedWord) {
             var pos = 0
-            if (char == 'Ñ') {
-                pos = 26 // último elemento lista
+            pos = if (char == 'Ñ') {
+                26 // último elemento lista
             } else {
-                pos = char.code - 65
+                char.code - 65
             }
             val color = when {
                 wordToGuess[contPosWord++] == char && shallowWordMap[char] != 0 -> {
@@ -371,10 +381,23 @@ class MainActivity : AppCompatActivity() {
                 editTextHandler(item)
                 item.id = contTag
                 item.tag = contTag++
-                item.isFocusable = false
+                item.setOnFocusChangeListener { view, hasFocus ->
+                    if (hasFocus) {
+                        currentEditText = view as EditText
+                        currentEditText.requestFocus()
+                        Toast.makeText(applicationContext, "Got the focus", Toast.LENGTH_LONG)
+                            .show()
+                    } else {
+                        Toast.makeText(applicationContext, "Lost the focus", Toast.LENGTH_LONG)
+                            .show()
+                    }
+                }
+                item.inputType = InputType.TYPE_NULL
+                item.isFocusableInTouchMode = true
+                item.isFocusable = true
                 item.isCursorVisible = false
                 item.setTextColor(WORD_COLORS.WHITE.getRGB())
-                item.setBackgroundColor(Color.parseColor("#434343"))
+                item.setBackgroundResource(R.drawable.custom_editext)
                 editTextList.add(item)
             }
         }
@@ -387,7 +410,7 @@ class MainActivity : AppCompatActivity() {
             override fun afterTextChanged(p0: Editable?) {
                 item.removeTextChangedListener(this)
                 val regex = Regex(pattern = "[a-zA-ZñÑ|\b]+")
-                // Obtener la posición actual del cursor
+                // Get current cursor position
                 if (regex.matches(p0.toString())) {
                     item.setText(p0.toString().uppercase())
 //                    item.setSelection(1) // Cursor position next to letter
@@ -424,17 +447,17 @@ class MainActivity : AppCompatActivity() {
     private fun checkEndGame(isWinner: Boolean) {
         if (isWinner) {
             binding.checkButton.isEnabled = false
-            showEndGameDialog(getString(R.string.win_message))
+            showEndGameDialog(getString(string.win_message))
         } else if (currentRow == FINAL_ROW) {
             binding.checkButton.isEnabled = false
-            showEndGameDialog(getString(R.string.lose_message_template, wordToGuess))
+            showEndGameDialog(getString(string.lose_message_template, wordToGuess))
         }
     }
 
     private fun showEndGameDialog(messageResId: String) {
         AlertDialog.Builder(this)
             .setMessage(messageResId)
-            .setPositiveButton(R.string.reset_game) { dialog, id ->
+            .setPositiveButton(string.reset_game) { dialog, id ->
                 resetGame()
             }.create().show()
         // Show reset button
