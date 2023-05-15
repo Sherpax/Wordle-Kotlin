@@ -5,16 +5,12 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.view.Gravity
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.View.OnTouchListener
-import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -165,13 +161,14 @@ class MainActivity : AppCompatActivity() {
         if (!binding.btnErase.isClickable) return
         val txt = event as TextView
         val maxFocus = currentRow * 5 + 5
-        currPos = currentEditText.id
+//        currPos = currentEditText.id
         if (txt.id != binding.btnErase.id && currPos < maxFocus) {
             currentEditText.apply {
                 setText(txt.text)
-                editTextList[++currPos].requestFocus()
+                editTextList[currPos].requestFocus()
             }
         }
+
         val animation = AnimationUtils.loadAnimation(this, anim.view_pressed)
         event.startAnimation(animation)
     }
@@ -180,11 +177,19 @@ class MainActivity : AppCompatActivity() {
         if (!binding.btnErase.isClickable) return
         val txt = event as TextView
         val maxFocus = currentRow * 5 + 5
+        if(currentEditText.id == currentRow) currentEditText.setText(txt.text)
         if (txt.id == binding.btnErase.id && currPos > maxFocus - 5) {
-            editTextList[--currPos].apply {
-                setText(txt.text)
-                setSelection(0)
-                editTextList[currPos].requestFocus()
+            if (editTextList[currPos].text.isNotEmpty()) {
+                editTextList[currPos].apply {
+                    setText(txt.text)
+                    setSelection(0)
+                }
+            } else {
+                editTextList[--currPos].apply {
+                    editTextList[currPos].requestFocus()
+                    setText(txt.text)
+                    setSelection(0)
+                }
             }
         }
     }
@@ -385,6 +390,7 @@ class MainActivity : AppCompatActivity() {
                     if (hasFocus) {
                         currentEditText = view as EditText
                         currentEditText.requestFocus()
+                        currPos = currentEditText.id
                         Toast.makeText(applicationContext, "Got the focus", Toast.LENGTH_LONG)
                             .show()
                     } else {
@@ -457,7 +463,7 @@ class MainActivity : AppCompatActivity() {
     private fun showEndGameDialog(messageResId: String) {
         AlertDialog.Builder(this)
             .setMessage(messageResId)
-            .setPositiveButton(string.reset_game) { dialog, id ->
+            .setPositiveButton(string.reset_game) { _, _ ->
                 resetGame()
             }.create().show()
         // Show reset button
