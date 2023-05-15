@@ -56,6 +56,7 @@ class MainActivity : AppCompatActivity() {
     private var db: AppDatabase? = null
     private var dao: WordDao? = null
     private lateinit var currentEditText: EditText
+    private var thread: Thread? = null
 
     private fun readWordsFromFile(context: Context): LinkedList<Word> {
         val words = LinkedList<Word>()
@@ -158,10 +159,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun keyboardHandler(event: View?) {
+        if(thread?.isAlive == true) return
         if (!binding.btnErase.isClickable) return
         val txt = event as TextView
         val maxFocus = currentRow * 5 + 5
-//        currPos = currentEditText.id
         if (txt.id != binding.btnErase.id && currPos < maxFocus) {
             currentEditText.apply {
                 setText(txt.text)
@@ -242,7 +243,7 @@ class MainActivity : AppCompatActivity() {
         binding.checkButton.isEnabled = false
         binding.btnErase.isClickable = false
 
-        Thread {
+        thread = Thread {
             for (i in ini until maxCol) {
                 val contIntWord = i - ini
                 val char = editTextList[i].text.toString().first()
@@ -256,6 +257,11 @@ class MainActivity : AppCompatActivity() {
                     if (i == maxCol - 1) {
                         if (currentRow != FINAL_ROW) {
                             ++currentRow
+                            if(currentRow * 5 < FINAL_ROW * 5) {
+                                currentEditText = editTextList[currentRow * 5]
+                            }else {
+                                currentEditText.clearFocus()
+                            }
                             makeNextRowEditable()
                             updateUIKeyColors(introducedWord.toString())
                             binding.checkButton.isEnabled = true
@@ -266,7 +272,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 Thread.sleep(390)
             }
-        }.start()
+        }
+        thread?.start()
     }
 
     private fun updateUIKeyColors(
