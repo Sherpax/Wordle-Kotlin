@@ -17,7 +17,6 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TableRow
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -95,6 +94,7 @@ class MainActivity : AppCompatActivity() {
         loadEditTexts()
 
         currentEditText = editTextList[0]
+        currentEditText.requestFocus()
 
         linerLayoutsArray = arrayOf(
             binding.firstLinear, binding.secondLinear,
@@ -159,17 +159,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun keyboardHandler(event: View?) {
-        if(thread?.isAlive == true) return
+        if (thread?.isAlive == true) return
         if (!binding.btnErase.isClickable) return
+        if(!currentEditText.hasFocus()) return
         val txt = event as TextView
         val maxFocus = currentRow * 5 + 5
         if (txt.id != binding.btnErase.id && currPos < maxFocus) {
             currentEditText.apply {
                 setText(txt.text)
-                editTextList[currPos].requestFocus()
             }
         }
-
         val animation = AnimationUtils.loadAnimation(this, anim.view_pressed)
         event.startAnimation(animation)
     }
@@ -178,10 +177,11 @@ class MainActivity : AppCompatActivity() {
         if (!binding.btnErase.isClickable) return
         val txt = event as TextView
         val maxFocus = currentRow * 5 + 5
-        if(currentEditText.id == currentRow) currentEditText.setText(txt.text)
+        if (currentEditText.id == currentRow) currentEditText.setText(txt.text)
         if (txt.id == binding.btnErase.id && currPos > maxFocus - 5) {
             if (editTextList[currPos].text.isNotEmpty()) {
                 editTextList[currPos].apply {
+                    editTextList[currPos].requestFocus()
                     setText(txt.text)
                     setSelection(0)
                 }
@@ -257,12 +257,13 @@ class MainActivity : AppCompatActivity() {
                     if (i == maxCol - 1) {
                         if (currentRow != FINAL_ROW) {
                             ++currentRow
-                            if(currentRow * 5 < FINAL_ROW * 5) {
+                            if (currentRow * 5 < FINAL_ROW * 5) {
                                 currentEditText = editTextList[currentRow * 5]
-                            }else {
+                            } else {
                                 currentEditText.clearFocus()
                             }
                             makeNextRowEditable()
+                            currentEditText.requestFocus()
                             updateUIKeyColors(introducedWord.toString())
                             binding.checkButton.isEnabled = true
                             binding.btnErase.isClickable = true
@@ -284,7 +285,7 @@ class MainActivity : AppCompatActivity() {
         for (char in introducedWord) {
             var pos = 0
             pos = if (char == 'Ñ') {
-                26 // último elemento lista
+                26 // last element in the list
             } else {
                 char.code - 65
             }
@@ -315,17 +316,17 @@ class MainActivity : AppCompatActivity() {
             val isGreen = color == "GREEN"
             val isYellow = color == "YELLOW"
             if (isGreen && arrTextViews[pos].tag != "GREEN") {
-                DrawableCompat.setTint(buttonDrawable, WORD_COLORS.GREEN.getRGB())
+                DrawableCompat.setTint(buttonDrawable, COLORS.GREEN.getRGB())
                 arrTextViews[pos].tag = color
             } else if (isYellow) {
-                DrawableCompat.setTint(buttonDrawable, WORD_COLORS.YELLOW.getRGB())
+                DrawableCompat.setTint(buttonDrawable, COLORS.YELLOW.getRGB())
                 arrTextViews[pos].tag = color
             } else {
                 if (arrTextViews[pos].tag != "YELLOW") {
-                    DrawableCompat.setTint(buttonDrawable, WORD_COLORS.BLACK.getRGB())
+                    DrawableCompat.setTint(buttonDrawable, COLORS.BLACK.getRGB())
                 }
             }
-            arrTextViews[pos].setTextColor(WORD_COLORS.WHITE.getRGB())
+            arrTextViews[pos].setTextColor(COLORS.WHITE.getRGB())
         }
 
     }
@@ -340,18 +341,18 @@ class MainActivity : AppCompatActivity() {
         val color = when {
             wordToGuess[contIntWord] == char && shallowWordMap[char] != 0 -> {
                 shallowWordMap[char]?.minus(1)?.let { shallowWordMap.put(char, it) }
-                WORD_COLORS.GREEN.getRGB()
+                COLORS.GREEN.getRGB()
             }
 
             shallowWordMap.containsKey(char) && shallowWordMap[char] != 0 -> {
                 shallowWordMap[char]?.minus(1)?.let { shallowWordMap.put(char, it) }
                 isWinner1 = false
-                WORD_COLORS.YELLOW.getRGB()
+                COLORS.YELLOW.getRGB()
             }
 
             else -> {
                 isWinner1 = false
-                WORD_COLORS.BLACK.getRGB()
+                COLORS.BLACK.getRGB()
             }
         }
         return Pair(color, isWinner1)
@@ -398,18 +399,13 @@ class MainActivity : AppCompatActivity() {
                         currentEditText = view as EditText
                         currentEditText.requestFocus()
                         currPos = currentEditText.id
-                        Toast.makeText(applicationContext, "Got the focus", Toast.LENGTH_LONG)
-                            .show()
-                    } else {
-                        Toast.makeText(applicationContext, "Lost the focus", Toast.LENGTH_LONG)
-                            .show()
                     }
                 }
                 item.inputType = InputType.TYPE_NULL
                 item.isFocusableInTouchMode = true
                 item.isFocusable = true
                 item.isCursorVisible = false
-                item.setTextColor(WORD_COLORS.WHITE.getRGB())
+                item.setTextColor(COLORS.WHITE.getRGB())
                 item.setBackgroundResource(R.drawable.custom_editext)
                 editTextList.add(item)
             }

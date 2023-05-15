@@ -38,9 +38,9 @@ class AnimationListener(private val latch: CountDownLatch) : Animation.Animation
     }
 
     fun flipperAnimation(view: View): ObjectAnimator? {
-        return ObjectAnimator.ofFloat(view, "rotationX", 0f, 360f)
+        return ObjectAnimator.ofFloat(view, "rotationX", 180f, 360f)
             .apply {
-                duration = 1000
+                duration = 850
                 start()
             }
     }
