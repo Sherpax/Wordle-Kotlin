@@ -177,19 +177,17 @@ class MainActivity : AppCompatActivity() {
         if (!binding.btnErase.isClickable) return
         val txt = event as TextView
         val maxFocus = currentRow * 5 + 5
-        if (currentEditText.id == currentRow) currentEditText.setText(txt.text)
+        if (currentEditText.id == currentRow * 5) currentEditText.setText(txt.text)
         if (txt.id == binding.btnErase.id && currPos > maxFocus - 5) {
             if (editTextList[currPos].text.isNotEmpty()) {
                 editTextList[currPos].apply {
                     editTextList[currPos].requestFocus()
                     setText(txt.text)
-                    setSelection(0)
                 }
             } else {
                 editTextList[--currPos].apply {
                     editTextList[currPos].requestFocus()
                     setText(txt.text)
-                    setSelection(0)
                 }
             }
         }

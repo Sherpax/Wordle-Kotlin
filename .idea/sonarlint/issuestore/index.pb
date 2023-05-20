@@ -7,8 +7,6 @@ c
 3app/src/main/java/com/example/wordle/dao/WordDao.kt,d\a\daf0fd42ac1e6c19939d349ee18315589fba873d
 c
 3app/src/main/java/com/example/wordle/AppDatabase.kt,4\b\4b0bd8f8fd89fbbdc3174fab4df88381e388ed87
-c
-3app/src/main/java/com/example/wordle/WORD_COLORS.kt,a\a\aae946a179ca2ff4942c799ba92614bb4d655fac
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 ;
@@ -17,3 +15,5 @@ P
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+A
+gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
